@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextInput, SimpleForm } from 'react-admin';
-import { Create } from '@semapps/archipelago-layout';
 import { useDataModel } from '@semapps/semantic-data-provider';
+import Create from '../layout/Create';
 
 const PairResourceCreate = props => {
   const dataModel = useDataModel(props.resource);

@@ -5,7 +5,7 @@ import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CourseTitle from './CourseTitle';
 import Show from '../../layout/Show';
 import CardLayout from "../../layout/CardLayout";
-import FollowButton from "../../layout/FollowButton";
+import FollowButton from "../../buttons/FollowButton";
 
 const CourseShow = props => {
   useCheckAuthenticated();

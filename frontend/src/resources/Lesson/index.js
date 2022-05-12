@@ -1,29 +1,26 @@
-import { PairResourceCreate } from '../../pair';
-import CourseEdit from './CourseEdit';
-import CourseList from './CourseList';
-import CourseShow from './CourseShow';
 import SettingsIcon from '@material-ui/icons/Settings';
+import LessonCreate from "./LessonCreate";
+import LessonEdit from "./LessonEdit";
 
 export default {
   config: {
-    list: CourseList,
-    show: CourseShow,
-    create: PairResourceCreate,
-    edit: CourseEdit,
+    // show: CourseShow,
+    create: LessonCreate,
+    edit: LessonEdit,
     icon: SettingsIcon,
     options: {
-      label: 'Mini-Parcours'
+      label: 'Leçon'
     }
   },
   dataModel: {
-    types: ['tutor:DigitalCourse', 'as:Application'],
+    types: ['tutor:Lesson'],
     fieldsMapping: {
       title: 'pair:label'
     }
   },
   translations: {
     fr: {
-      name: 'Mini-parcours',
+      name: 'Leçon |||| Leçons',
       fields: {
         'pair:label': 'Nom',
         'pair:comment': 'Courte description',

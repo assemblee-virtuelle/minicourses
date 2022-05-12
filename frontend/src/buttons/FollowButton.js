@@ -18,7 +18,7 @@ const FollowButton = () => {
       type: ACTIVITY_TYPES.FOLLOW,
       actor: outbox.owner,
       object: record.id,
-      to: PUBLIC_URI
+      to: [record.id, PUBLIC_URI]
     });
     notify('Vous suivez maintenant ce cours', 'success');
   }, [outbox, record, notify, addItem]);
@@ -32,7 +32,7 @@ const FollowButton = () => {
         type: ACTIVITY_TYPES.FOLLOW,
         object: record.id,
       },
-      to: PUBLIC_URI
+      to: [record.id, PUBLIC_URI]
     });
     notify('Vous ne suivez plus ce cours', 'success');
   }, [outbox, record, notify, removeItem]);
