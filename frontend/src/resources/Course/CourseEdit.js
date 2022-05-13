@@ -1,10 +1,12 @@
 import React from 'react';
-import { ImageInput, SelectInput, TextInput, TabbedForm, FormTab, ReferenceManyField, Datagrid, TextField, ShowButton, EditButton } from 'react-admin';
+import { ImageInput, SelectInput, TextInput, TabbedForm, FormTab, ReferenceManyField } from 'react-admin';
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
 import CourseTitle from './CourseTitle';
 import Edit from '../../layout/Edit';
 import AddLessonButton from "../../buttons/AddLessonButton";
+import CardsList from "../../layout/CardsList";
+import LessonCard from "../Lesson/LessonCard";
 
 const CourseEdit = props => (
   <Edit title={<CourseTitle />} {...props}>
@@ -27,11 +29,7 @@ const CourseEdit = props => (
           target="pair:partOf"
           sort={{ field: 'pair:label', order: 'DESC' }}
         >
-          <Datagrid rowClick="edit">
-            <TextField source="pair:label" />
-            <ShowButton />
-            <EditButton />
-          </Datagrid>
+          <CardsList CardComponent={LessonCard} link="edit" />
         </ReferenceManyField>
         <AddLessonButton />
       </FormTab>

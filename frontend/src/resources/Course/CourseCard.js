@@ -14,18 +14,14 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CourseCard = ({ record, basePath }) => {
+const CourseCard = ({ record }) => {
   const classes = useStyles();
   return (
     <>
-      <TextField variant="h2" component="div" record={record} source="pair:label" className={classes.title} />
+      <TextField record={record} variant="h2" component="div"  source="pair:label" className={classes.title} />
       <TextField record={record} source="pair:comment" variant="body2" className={classes.description}/>
     </>
   );
-};
-
-CourseCard.defaultProps = {
-  variant: 'full',
 };
 
 export default CourseCard;

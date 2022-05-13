@@ -22,8 +22,7 @@ const EditView = (props) => {
         </Grid>
         <Grid item xs={4}>
           <Box display="flex" alignItems="middle" justifyContent="right" pt={3}>
-            <ListButton record={record} />
-            <ShowButton record={record} />
+            {props.actions.map((action, key) => React.cloneElement(action, { key, record }))}
           </Box>
         </Grid>
       </Grid>
@@ -50,6 +49,13 @@ const EditView = (props) => {
       </Box>
     </>
   )
+};
+
+EditView.defaultProps = {
+  actions: [
+    <ListButton />,
+    <ShowButton />
+  ]
 };
 
 export default EditView;

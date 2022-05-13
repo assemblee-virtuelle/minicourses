@@ -1,10 +1,11 @@
 import SettingsIcon from '@material-ui/icons/Settings';
 import LessonCreate from "./LessonCreate";
 import LessonEdit from "./LessonEdit";
+import LessonShow from "./LessonShow";
 
 export default {
   config: {
-    // show: CourseShow,
+    show: LessonShow,
     create: LessonCreate,
     edit: LessonEdit,
     icon: SettingsIcon,
@@ -26,12 +27,8 @@ export default {
         'pair:comment': 'Courte description',
         'pair:description': 'Description',
         'pair:depictedBy': 'Image',
-        'pair:hasStatus': 'Statut',
-        'pair:homePage': 'Site web',
-        'pair:involves': 'Implique',
-        'pair:needs': 'Compétences requises',
-        'pair:documentedBy': 'Documenté par',
-        'pair:hasTopic': 'A pour thème'
+        'tutor:duration': 'Durée (jours)',
+        'tutor:order': 'Ordre par rapport aux autres fiches'
       }
     }
   }

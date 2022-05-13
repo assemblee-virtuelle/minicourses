@@ -14,8 +14,7 @@ const ShowView = (props) => {
         </Grid>
         <Grid item xs={4}>
           <Box display="flex" alignItems="middle" justifyContent="right" pt={3}>
-            <ListButton record={record} />
-            <EditButton record={record} />
+            {props.actions.map(action => React.cloneElement(action, { record }))}
           </Box>
         </Grid>
       </Grid>
@@ -24,6 +23,13 @@ const ShowView = (props) => {
       </Box>
     </>
   )
+};
+
+ShowView.defaultProps = {
+  actions: [
+    <ListButton />,
+    <EditButton />
+  ]
 };
 
 export default ShowView;
