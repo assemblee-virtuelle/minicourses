@@ -10,8 +10,6 @@ const CourseRegistrantsField = ({ record, ...rest }) => {
     { enabled: !!(record?.id) }
   );
 
-  console.log('ids', ids);
-
   if( loading || error ) return null;
 
   return <span {...rest}>{ids.length} participants</span>

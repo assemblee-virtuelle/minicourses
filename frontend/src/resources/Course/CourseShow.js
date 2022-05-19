@@ -7,6 +7,7 @@ import CardLayout from "../../layout/CardLayout";
 import FollowButton from "../../common/buttons/FollowButton";
 import RegistrationStatusField from "../../common/fields/RegistrationStatusField";
 import CourseDetails from "./CourseDetails";
+import CourseProgressionField from "../../common/fields/CourseProgressionField";
 
 const CourseShow = props => {
   useCheckAuthenticated();
@@ -17,6 +18,7 @@ const CourseShow = props => {
         actions={[<FollowButton />]}
         details={<CourseDetails />}
         status={<RegistrationStatusField reference="Registration" source="pair:hasStatus" />}
+        bottom={<CourseProgressionField />}
       >
         <MarkdownField source="pair:description" />
       </CardLayout>

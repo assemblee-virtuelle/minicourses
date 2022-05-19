@@ -1,6 +1,6 @@
 import React from 'react';
 import { List, ListItem, ListItemAvatar, ListItemText, Divider, makeStyles } from '@material-ui/core';
-import { getFieldLabelTranslationArgs, useShowContext, useTranslate } from 'react-admin';
+import { useShowContext } from 'react-admin';
 
 const useStyles = makeStyles((theme) => ({
   root: (props) => ({
@@ -36,22 +36,11 @@ const useStyles = makeStyles((theme) => ({
   primary: (props) => ({
     whiteSpace: props.isVertical ? undefined : 'nowrap',
     lineHeight: 1
-  }),
-  secondary: (props) => ({
-    paddingTop: 2,
-    fontSize: 14,
-    lineHeight: 1,
-    whiteSpace: props.isVertical ? undefined : 'nowrap',
-    color: 'black',
-    '& a, & span': {
-      color: 'black'
-    }
-  }),
+  })
 }));
 
 const IconsList = ({ orientation, children }) => {
   const isVertical = orientation === 'vertical';
-  const translate = useTranslate();
   const classes = useStyles({ isVertical });
   const { basePath, loaded, record, resource } = useShowContext();
 
@@ -66,13 +55,6 @@ const IconsList = ({ orientation, children }) => {
   return (
     <List className={classes.root}>
       {fields.map((field, i) => {
-        const label = translate(
-          ...getFieldLabelTranslationArgs({
-            label: field.props.label,
-            resource,
-            source: field.props.source,
-          })
-        );
         const value = React.cloneElement(field, {
           record,
           resource,
@@ -90,7 +72,6 @@ const IconsList = ({ orientation, children }) => {
               )}
               <ListItemText
                 primary={value}
-                // secondary={value}
                 classes={{ root: classes.text, primary: classes.primary, secondary: classes.secondary }}
                 primaryTypographyProps={{ variant: 'subtitle2' }}
               />

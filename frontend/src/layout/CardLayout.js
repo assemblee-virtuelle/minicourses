@@ -1,6 +1,6 @@
 import React from 'react';
 import { useShowContext } from 'react-admin';
-import { Box, Card, CardMedia, CardContent, CardActions, makeStyles, useMediaQuery } from '@material-ui/core';
+import { Box, Card, CardMedia, CardContent, Grid, makeStyles, useMediaQuery } from '@material-ui/core';
 import VideoField from "../common/fields/VideoField";
 
 const useStyles = makeStyles({
@@ -24,13 +24,12 @@ const useStyles = makeStyles({
     backgroundColor: '#e0e0e0',
   },
   actions: {
-    justifyContent: 'right',
     padding: 16,
     paddingTop: 0
   }
 });
 
-const CardLayout = ({ image, video, actions, details, status, children }) => {
+const CardLayout = ({ image, video, actions, details, status, bottom, children }) => {
   const classes = useStyles();
   const { record } = useShowContext();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
@@ -43,7 +42,7 @@ const CardLayout = ({ image, video, actions, details, status, children }) => {
             {status &&
               <Box display="flex" width="100%" height="100%" alignItems="start" justifyContent="end">
                 <Box p={2}>
-                  {React.cloneElement(status, {record})}
+                  {React.cloneElement(status, { record })}
                 </Box>
               </Box>
             }
@@ -61,9 +60,20 @@ const CardLayout = ({ image, video, actions, details, status, children }) => {
           React.cloneElement(child, { record })
         ))}
       </CardContent>
-      <CardActions className={classes.actions}>
-        {actions}
-      </CardActions>
+      <Box>
+        <Grid container>
+          <Grid item xs={12} sm={12} md={7}>
+            <Box pl={2} pr={2} pb={2}>
+              {React.cloneElement(bottom, { record })}
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={12} md={5}>
+            <Box display="flex" justifyContent="right" className={classes.actions}>
+              {actions}
+            </Box>
+          </Grid>
+        </Grid>
+      </Box>
     </Card>
   )
 };

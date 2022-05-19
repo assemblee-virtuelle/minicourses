@@ -1,14 +1,14 @@
 import React, { useCallback } from 'react';
 import { useRecordContext, useNotify } from "react-admin";
 import { useOutbox, useCollection, ACTIVITY_TYPES, PUBLIC_URI } from '@semapps/activitypub-components';
-import { Button } from '@material-ui/core';
+import { Button, useMediaQuery } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
 
 const FollowButton = () => {
   const record = useRecordContext();
   const outbox = useOutbox();
-
+  const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
   const { items: following, addItem, removeItem } = useCollection('following');
   const notify = useNotify();
 
@@ -39,11 +39,11 @@ const FollowButton = () => {
 
   if( following.includes(record?.id) ) {
     return(
-      <Button onClick={unfollow} startIcon={<ClearIcon />} variant="contained" size="large" color="primary">Arrêter ce parcours</Button>
+      <Button onClick={unfollow} fullWidth={xs} startIcon={<ClearIcon />} variant="contained" size="large" color="primary">Arrêter ce parcours</Button>
     )
   } else {
     return(
-      <Button onClick={follow} startIcon={<CheckIcon />} variant="contained" size="large" color="primary">Suivre ce parcours</Button>
+      <Button onClick={follow} fullWidth={xs} startIcon={<CheckIcon />} variant="contained" size="large" color="primary">Suivre ce parcours</Button>
     )
   }
 };
