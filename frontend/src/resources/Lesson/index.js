@@ -28,7 +28,8 @@ export default {
         'pair:description': 'Description',
         'pair:depictedBy': 'Image',
         'tutor:duration': 'Durée (jours)',
-        'tutor:order': 'Ordre par rapport aux autres fiches'
+        'tutor:order': 'Ordre par rapport aux autres fiches',
+        'tutor:video': 'Vidéo'
       }
     }
   }

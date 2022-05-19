@@ -11,6 +11,11 @@ const useStyles = makeStyles((theme) => ({
   },
   description: {
     marginTop: 10,
+    display: 'block',
+    textOverflow: 'ellipsis',
+    wordWrap: 'break-word',
+    overflow: 'hidden',
+    maxHeight: '4.2em',
   },
 }));
 
@@ -19,13 +24,12 @@ const LessonCard = ({ record }) => {
   return (
     <>
       <TextField variant="h2" component="div" record={record} source="pair:label" className={classes.title} />
-      <TextField record={record} source="pair:comment" variant="body2" className={classes.description}/>
+      <TextField record={record} source="pair:description" variant="body2" className={classes.description}/>
       <Typography variant="body2" className={classes.description}>
         <strong>Durée:&nbsp;</strong>
         <NumberField record={record} source="tutor:duration" variant="body2" />
         &nbsp;jours
       </Typography>
-
     </>
   );
 };

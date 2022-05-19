@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditButton, TextField } from 'react-admin';
+import { EditButton } from 'react-admin';
 import { MarkdownField } from '@semapps/markdown-components';
 import { useCheckAuthenticated } from '@semapps/auth-provider';
 import LessonTitle from './LessonTitle';
@@ -11,8 +11,7 @@ const LessonShow = props => {
   useCheckAuthenticated();
   return (
     <Show title={<LessonTitle />} actions={[<ReturnToCourseButton linkType="show" />, <EditButton />]} {...props}>
-      <CardLayout image="pair:depictedBy">
-        <TextField variant="h6" source="pair:comment" />
+      <CardLayout image="pair:depictedBy" video="tutor:video">
         <MarkdownField source="pair:description" />
       </CardLayout>
     </Show>

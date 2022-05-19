@@ -11,11 +11,11 @@ const LessonForm = (props) => {
   return (
     <SimpleForm {...props} redirect={redirect}>
       <TextInput source="pair:label" fullWidth />
-      <TextInput source="pair:comment" fullWidth />
       <MarkdownInput multiline source="pair:description" fullWidth />
-      <ImageInput source="pair:depictedBy" accept="image/*">
+      <ImageInput source="pair:depictedBy" accept="image/*" helperText="Si vous attachez une vidéo, vous devriez inclure une icône de type |> car, en cliquant dessus, l'utilisateur ira sur la vidéo">
         <ImageField source="src" />
       </ImageInput>
+      <TextInput source="tutor:video" fullWidth helperText="Lien YouTube, Peertube, DailyMotion, etc." />
       <NumberInput source="tutor:duration" fullWidth />
       <NumberInput source="tutor:order" fullWidth />
     </SimpleForm>
