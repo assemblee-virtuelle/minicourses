@@ -4,8 +4,8 @@ import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField, ReferenceInput, ReferenceArrayInput } from '@semapps/semantic-data-provider';
 import CourseTitle from './CourseTitle';
 import Edit from '../../layout/Edit';
-import AddLessonButton from "../../buttons/AddLessonButton";
-import CardsList from "../../layout/CardsList";
+import AddLessonButton from "../../common/buttons/AddLessonButton";
+import CardsList from "../../common/list/CardsList";
 import LessonCard from "../Lesson/LessonCard";
 
 const CourseEdit = props => (
@@ -29,7 +29,7 @@ const CourseEdit = props => (
           addLabel={false}
           reference="Lesson"
           target="pair:partOf"
-          sort={{ field: 'pair:label', order: 'DESC' }}
+          sort={{ field: 'pair:label', order: 'ASC' }}
         >
           <CardsList CardComponent={LessonCard} link="edit" />
         </ReferenceManyField>

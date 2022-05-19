@@ -1,7 +1,7 @@
 import React from 'react';
 import { useShowContext } from 'react-admin';
 import { Box, Card, CardMedia, CardContent, CardActions, makeStyles, useMediaQuery } from '@material-ui/core';
-import VideoField from "../fields/VideoField";
+import VideoField from "../common/fields/VideoField";
 
 const useStyles = makeStyles({
   media: {
@@ -21,7 +21,7 @@ const useStyles = makeStyles({
     paddingRight: 16,
     paddingTop: 6,
     paddingBottom: 6,
-    backgroundColor: '#e8e8e8',
+    backgroundColor: '#e0e0e0',
   },
   actions: {
     justifyContent: 'right',

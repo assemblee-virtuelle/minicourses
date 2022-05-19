@@ -4,8 +4,8 @@ import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CourseTitle from './CourseTitle';
 import Show from '../../layout/Show';
 import CardLayout from "../../layout/CardLayout";
-import FollowButton from "../../buttons/FollowButton";
-import RegistrationStatusField from "../../fields/RegistrationStatusField";
+import FollowButton from "../../common/buttons/FollowButton";
+import RegistrationStatusField from "../../common/fields/RegistrationStatusField";
 import CourseDetails from "./CourseDetails";
 
 const CourseShow = props => {

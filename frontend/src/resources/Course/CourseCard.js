@@ -1,12 +1,14 @@
 import React from 'react';
 import { TextField } from 'react-admin';
 import { makeStyles, Typography } from '@material-ui/core';
-import RegistrationStatusField from "../../fields/RegistrationStatusField";
+import RegistrationStatusField from "../../common/fields/RegistrationStatusField";
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
+import PeopleIcon from '@material-ui/icons/People';
 import Chip from "../../common/Chip";
-import CourseDurationField from "../../fields/CourseDurationField";
-import CourseContentField from "../../fields/CourseContentField";
+import CourseDurationField from "../../common/fields/CourseDurationField";
+import CourseContentField from "../../common/fields/CourseContentField";
+import CourseRegistrantsField from "../../common/fields/CourseRegistrantsField";
 
 const useStyles = makeStyles(() => ({
   title: {
@@ -41,6 +43,9 @@ const CourseCard = ({ record }) => {
       </Chip>
       <Chip icon={<FileCopyOutlinedIcon />}>
         <CourseContentField record={record} />
+      </Chip>
+      <Chip icon={<PeopleIcon />}>
+        <CourseRegistrantsField record={record} />
       </Chip>
       <TextField record={record} source="pair:description" variant="body2" className={classes.description}/>
     </>

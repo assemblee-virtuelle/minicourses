@@ -21,11 +21,11 @@ const useStyles = makeStyles((theme) => ({
     padding: props.isVertical ? '8px 0 8px 0' : '0 16px 0 16px',
   }),
   avatar: {
-    minWidth: 40,
+    minWidth: 32,
   },
   icon: {
     marginTop: 4,
-    fontSize: '1.8rem',
+    fontSize: '1.6rem',
   },
   divider: {
     backgroundColor: '#a6a6a6',
@@ -89,8 +89,8 @@ const IconsList = ({ orientation, children }) => {
                 </ListItemAvatar>
               )}
               <ListItemText
-                primary={label}
-                secondary={value}
+                primary={value}
+                // secondary={value}
                 classes={{ root: classes.text, primary: classes.primary, secondary: classes.secondary }}
                 primaryTypographyProps={{ variant: 'subtitle2' }}
               />

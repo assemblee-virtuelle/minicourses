@@ -3,7 +3,7 @@ import LessonTitle from './LessonTitle';
 import Edit from '../../layout/Edit';
 import LessonForm from "./LessonForm";
 import {ShowButton} from "react-admin";
-import ReturnToCourseButton from "../../buttons/ReturnToCourseButton";
+import ReturnToCourseButton from "../../common/buttons/ReturnToCourseButton";
 
 const LessonEdit = props => {
   return (
