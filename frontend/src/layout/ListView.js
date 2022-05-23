@@ -3,7 +3,7 @@ import { CreateButton, useListContext } from 'react-admin';
 import { Box, Typography, Grid } from '@material-ui/core';
 
 const ListView = (props) => {
-  const { defaultTitle } = useListContext(props);
+  const { defaultTitle, hasCreate } = useListContext(props);
   return(
     <>
       <Grid container>
@@ -14,7 +14,7 @@ const ListView = (props) => {
         </Grid>
         <Grid item xs={4}>
           <Box display="flex" alignItems="middle" justifyContent="right" pt={3}>
-            <CreateButton />
+            {hasCreate && <CreateButton />}
           </Box>
         </Grid>
       </Grid>
