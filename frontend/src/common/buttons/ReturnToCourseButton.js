@@ -6,7 +6,7 @@ const ReturnToCourseButton = ({ record, linkType }) => {
   return (
     <Button
       component={Link}
-      to={linkToRecord('/Course', record?.['pair:partOf'], linkType)}
+      to={linkToRecord('/Course', record?.['pair:partOf'], linkType) + '/1'}
       label="Retour"
     >
       <ArrowBackIcon />

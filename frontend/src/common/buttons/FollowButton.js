@@ -1,22 +1,27 @@
 import React, { useCallback } from 'react';
 import { useRecordContext, useNotify, useRefresh } from "react-admin";
-import { useOutbox, useCollection, ACTIVITY_TYPES, PUBLIC_URI } from '@semapps/activitypub-components';
-import { Button, useMediaQuery, LinearProgress } from '@material-ui/core';
+import { useOutbox, ACTIVITY_TYPES, PUBLIC_URI } from '@semapps/activitypub-components';
+import { Button, useMediaQuery } from '@material-ui/core';
 import CheckIcon from '@material-ui/icons/Check';
 import ClearIcon from '@material-ui/icons/Clear';
+import AutorenewIcon from '@material-ui/icons/Autorenew';
+import useRegistration from "../../hooks/useRegistration";
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t));
 
+const STATUS_RUNNING = process.env.REACT_APP_MIDDLEWARE_URL + 'status/running';
+const STATUS_ABORTED = process.env.REACT_APP_MIDDLEWARE_URL + 'status/aborted';
+const STATUS_FINISHED = process.env.REACT_APP_MIDDLEWARE_URL + 'status/finished';
+
 const FollowButton = () => {
   const record = useRecordContext();
+  const registration = useRegistration(record);
   const outbox = useOutbox();
   const xs = useMediaQuery((theme) => theme.breakpoints.down('xs'), { noSsr: true });
-  const { items: following, loaded, addItem, removeItem } = useCollection('following');
   const notify = useNotify();
   const refresh = useRefresh();
 
   const follow = useCallback(async () => {
-    addItem(record.id);
     await outbox.post({
       type: ACTIVITY_TYPES.FOLLOW,
       actor: outbox.owner,
@@ -26,10 +31,9 @@ const FollowButton = () => {
     notify('Vous suivez maintenant ce parcours', 'success');
     await delay(2000);
     refresh();
-  }, [outbox, record, notify, refresh, addItem]);
+  }, [outbox, record, notify, refresh]);
 
   const unfollow = useCallback(async () => {
-    removeItem(record.id);
     await outbox.post({
       type: ACTIVITY_TYPES.UNDO,
       actor: outbox.owner,
@@ -42,20 +46,14 @@ const FollowButton = () => {
     notify('Vous ne suivez plus ce parcours', 'success');
     await delay(2000);
     refresh();
-  }, [outbox, record, notify, refresh, removeItem]);
+  }, [outbox, record, notify, refresh]);
 
-  if( !loaded ) {
-    return(
-      <LinearProgress />
-    );
-  } else if( loaded && following.includes(record?.id) ) {
-    return(
-      <Button onClick={unfollow} fullWidth={xs} startIcon={<ClearIcon />} variant="contained" size="large" color="primary">Arrêter ce parcours</Button>
-    )
-  } else {
-    return(
-      <Button onClick={follow} fullWidth={xs} startIcon={<CheckIcon />} variant="contained" size="large" color="primary">Suivre ce parcours</Button>
-    )
+  if( !registration ) {
+    return( <Button onClick={follow} fullWidth={xs} startIcon={<CheckIcon />} variant="contained" size="large" color="primary">Suivre ce parcours</Button> );
+  } else if( registration['pair:hasStatus'] === STATUS_RUNNING ) {
+    return( <Button onClick={unfollow} fullWidth={xs} startIcon={<ClearIcon />} variant="contained" size="large" color="primary">Arrêter ce parcours</Button> );
+  } else if( registration['pair:hasStatus'] === STATUS_FINISHED || registration['pair:hasStatus'] === STATUS_ABORTED ) {
+    return( <Button onClick={follow} fullWidth={xs} startIcon={<AutorenewIcon />} variant="contained" size="large" color="primary">Recommencer ce parcours</Button> );
   }
 };
 
