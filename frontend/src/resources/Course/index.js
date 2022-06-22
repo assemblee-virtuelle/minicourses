@@ -1,4 +1,4 @@
-import { PairResourceCreate } from '../../pair';
+import CourseCreate from './CourseCreate';
 import CourseEdit from './CourseEdit';
 import CourseList from './CourseList';
 import CourseShow from './CourseShow';
@@ -8,7 +8,7 @@ export default {
   config: {
     list: CourseList,
     show: CourseShow,
-    create: PairResourceCreate,
+    create: CourseCreate,
     edit: CourseEdit,
     icon: SettingsIcon,
     options: {

@@ -19,7 +19,7 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
 }))(LinearProgress);
 
-const CourseRegistrantsField = ({ record, ...rest }) => {
+const CourseRegistrantsField = ({ record, resource, basePath, ...rest }) => {
   const registration = useRegistration(record);
 
   const { ids } = useGetList(

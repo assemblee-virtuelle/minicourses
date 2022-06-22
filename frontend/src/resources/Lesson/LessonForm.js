@@ -6,7 +6,7 @@ import { ImageField } from '@semapps/semantic-data-provider';
 const LessonForm = (props) => {
   const redirect = props.mode === 'edit'
     ? props.record['pair:partOf'] ? `/Course/${encodeURIComponent(props.record['pair:partOf'])}/1` : 'show'
-    : undefined;
+    : props.redirect;
 
   return (
     <SimpleForm {...props} redirect={redirect}>

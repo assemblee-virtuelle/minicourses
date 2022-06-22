@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetList } from "react-admin";
 
-const CourseContentField = ({ record, ...rest }) => {
+const CourseContentField = ({ record, resource, basePath, ...rest }) => {
   const { ids, loading, error } = useGetList(
     'Lesson',
     { page: 1, perPage: 1000 },

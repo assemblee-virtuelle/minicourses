@@ -14,7 +14,7 @@ const ShowView = (props) => {
         </Grid>
         <Grid item xs={4}>
           <Box display="flex" alignItems="middle" justifyContent="right" pt={3}>
-            {props.actions.map(action => React.cloneElement(action, { record }))}
+            {props.actions.map((action, i) => React.cloneElement(action, { record, key: i }))}
           </Box>
         </Grid>
       </Grid>

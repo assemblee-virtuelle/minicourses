@@ -1,7 +1,7 @@
 import React from 'react';
 import { useGetList } from "react-admin";
 
-const CourseDurationField = ({ record, ...rest }) => {
+const CourseDurationField = ({ record, resource, basePath, ...rest }) => {
   const { data, ids, loading, error } = useGetList(
     'Lesson',
     { page: 1, perPage: 1000 },
@@ -10,7 +10,7 @@ const CourseDurationField = ({ record, ...rest }) => {
     { enabled: !!(record?.id) }
   );
 
-  if( loading || error || ids.length === 0 ) return null;
+  if( loading || error ) return null;
 
   const totalDuration = Object.values(data).reduce((acc, lesson) => acc + lesson['tutor:duration'], 0);
 

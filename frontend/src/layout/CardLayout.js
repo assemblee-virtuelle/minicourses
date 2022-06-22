@@ -69,7 +69,7 @@ const CardLayout = ({ image, video, actions, details, status, bottom, children }
           </Grid>
           <Grid item xs={12} sm={12} md={5}>
             <Box display="flex" justifyContent="right" className={classes.actions}>
-              {actions}
+              {actions.map((action, i) => React.cloneElement(action, { key: i }))}
             </Box>
           </Grid>
         </Grid>
