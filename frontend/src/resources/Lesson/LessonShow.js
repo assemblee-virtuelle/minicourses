@@ -12,7 +12,21 @@ const LessonShow = props => {
   return (
     <Show title={<LessonTitle />} actions={[<ReturnToCourseButton linkType="show" />, <EditButton />]} {...props}>
       <CardLayout image="pair:depictedBy" video="tutor:video">
-        <MarkdownField source="pair:description" />
+        <MarkdownField
+          source="pair:description"
+          overrides={{
+            img: {
+              props: {
+                width: '100%'
+              }
+            },
+            blockquote: {
+              props: {
+                style: { borderLeft: "1px solid grey", paddingLeft: 15, marginLeft: 0, fontStyle: 'italic', color: 'grey' }
+              }
+            }
+          }}
+        />
       </CardLayout>
     </Show>
   );

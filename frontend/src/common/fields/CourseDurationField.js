@@ -2,7 +2,7 @@ import React from 'react';
 import { useGetList } from "react-admin";
 
 const CourseDurationField = ({ record, resource, basePath, ...rest }) => {
-  const { data, ids, loading, error } = useGetList(
+  const { data, loading, error } = useGetList(
     'Lesson',
     { page: 1, perPage: 1000 },
     {},

@@ -29,7 +29,7 @@ const CourseEdit = props => (
           addLabel={false}
           reference="Lesson"
           target="pair:partOf"
-          sort={{ field: 'pair:label', order: 'ASC' }}
+          sort={{ field: 'tutor:order', order: 'ASC' }}
         >
           <CardsList CardComponent={LessonCard} link="edit" />
         </ReferenceManyField>
