@@ -11,6 +11,7 @@ import * as resources from './resources';
 import Layout from './layout/Layout';
 import LoginPage from './layout/LoginPage';
 import theme from './config/theme';
+import customRoutes from "./config/customRoutes";
 
 const history = createHistory();
 
@@ -26,6 +27,7 @@ const App = () => (
     theme={theme}
     loginPage={LoginPage}
     logoutButton={LogoutButton}
+    customRoutes={customRoutes}
   >
     {Object.entries(resources).map(([key, resource]) => (
       <Resource key={key} name={key} {...resource.config} />

@@ -11,6 +11,7 @@ import FollowButton from "../../common/buttons/FollowButton";
 import RegistrationStatusField from "../../common/fields/RegistrationStatusField";
 import CourseProgressionField from "../../common/fields/CourseProgressionField";
 import CourseDetails from "./CourseDetails";
+import useRegistrations from "../../hooks/useRegistrations";
 
 const useStyles = makeStyles(() => ({
   chip: {
@@ -22,13 +23,14 @@ const useStyles = makeStyles(() => ({
 const CourseShow = props => {
   useCheckAuthenticated();
   const classes = useStyles();
+  const registrations = useRegistrations();
   return (
     <Show title={<CourseTitle />}  {...props}>
       <CardLayout
         image="pair:depictedBy"
         actions={[<FollowButton />]}
         details={<CourseDetails />}
-        status={<RegistrationStatusField reference="Registration" source="pair:hasStatus" />}
+        status={<RegistrationStatusField reference="Registration" source="pair:hasStatus" registrations={registrations} />}
         bottom={<CourseProgressionField />}
       >
         <ReferenceArrayField reference="Theme" source="pair:hasTopic">

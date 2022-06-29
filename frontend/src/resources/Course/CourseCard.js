@@ -30,22 +30,22 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-const CourseCard = ({ record }) => {
+const CourseCard = ({ record, registrations }) => {
   const classes = useStyles();
   return (
     <>
-      <Typography  component="div">
+      <Typography component="div">
         <TextField record={record} variant="h2" component="span" source="pair:label" className={classes.title} />
-        <RegistrationStatusField record={record} size="small" reference="Registration" source="pair:hasStatus" className={classes.chip} />
+        <RegistrationStatusField record={record} registrations={registrations} size="small" reference="Registration" source="pair:hasStatus" className={classes.chip} />
       </Typography>
       <Chip icon={<ScheduleIcon />}>
-        <CourseDurationField label="Durée" record={record} />
+        <CourseDurationField source="tutor:duration" label="Durée" record={record} />
       </Chip>
       <Chip icon={<FileCopyOutlinedIcon />}>
-        <CourseContentField record={record} />
+        <CourseContentField source="pair:hasPart" record={record} />
       </Chip>
       <Chip icon={<PeopleIcon />}>
-        <CourseRegistrantsField record={record} />
+        <CourseRegistrantsField source="tutor:hasRegistration" record={record} />
       </Chip>
       <TextField record={record} source="pair:description" variant="body2" className={classes.description}/>
     </>

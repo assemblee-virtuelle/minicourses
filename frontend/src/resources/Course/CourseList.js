@@ -3,15 +3,17 @@ import { useCheckAuthenticated } from '@semapps/auth-provider';
 import CardsList from "../../common/list/CardsList";
 import List from "../../layout/List";
 import CourseCard from "./CourseCard";
-import CourseTitle from "./CourseTitle";
+import useRegistrations from "../../hooks/useRegistrations";
 
 const CourseList = props => {
   useCheckAuthenticated();
+  const registrations = useRegistrations();
   return (
-    <List title={<CourseTitle />} {...props}>
+    <List {...props}>
       <CardsList
         CardComponent={CourseCard}
         link="show"
+        registrations={registrations}
       />
     </List>
   );

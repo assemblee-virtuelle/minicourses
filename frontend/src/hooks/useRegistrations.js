@@ -1,21 +1,21 @@
 import { useGetIdentity, useGetList } from "react-admin";
 
-const useRegistration = record => {
+const useRegistrations = () => {
   const { identity } = useGetIdentity();
 
   const { data, ids, loading, error } = useGetList(
     'Registration',
     { page: 1, perPage: 1000 },
     { field: 'pair:startDate', order: 'DESC' },
-    { 'tutor:registrant': identity?.id, 'tutor:registrationFor': record?.id },
-    { enabled: !!(identity?.id && record?.id) }
+    { 'tutor:registrant': identity?.id },
+    { enabled: !!(identity?.id) }
   );
 
   if( loading || error || ids.length === 0 ) {
-    return null;
+    return [];
   } else {
-    return data[ids[0]];
+    return Object.values(data);
   }
 };
 
-export default useRegistration;
+export default useRegistrations;

@@ -1,18 +1,7 @@
 import React from 'react';
-import { useGetList } from "react-admin";
 
-const CourseContentField = ({ record, resource, basePath, ...rest }) => {
-  const { ids, loading, error } = useGetList(
-    'Lesson',
-    { page: 1, perPage: 1000 },
-    {},
-    { 'pair:partOf': record?.id },
-    { enabled: !!(record?.id) }
-  );
-
-  if( loading || error ) return null;
-
-  return <span {...rest}>{ids.length} fiches</span>
+const CourseContentField = ({ record, resource, basePath, source, ...rest }) => {
+  return <span {...rest}>{record?.[source]?.length || 0} fiches</span>
 };
 
 export default CourseContentField;

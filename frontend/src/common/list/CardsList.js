@@ -35,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CardsList = ({ CardComponent, link }) => {
+const CardsList = ({ CardComponent, link, ...rest }) => {
   const classes = useStyles();
   const { ids, data, basePath, loading } = useListContext();
   return loading ? (
@@ -51,7 +51,7 @@ const CardsList = ({ CardComponent, link }) => {
               <CardMedia className={classes.image} image={Array.isArray(image) ? image[0] : image} />
             )}
             <CardContent className={classes.content}>
-              <CardComponent record={data[id]} basePath={basePath} />
+              <CardComponent record={data[id]} basePath={basePath} {...rest} />
             </CardContent>
           </Card>
         </Link>

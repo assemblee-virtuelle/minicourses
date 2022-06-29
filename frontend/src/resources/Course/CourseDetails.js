@@ -9,9 +9,9 @@ import CourseRegistrantsField from "../../common/fields/CourseRegistrantsField";
 
 const CourseDetails = (props) => (
   <IconsList {...props}>
-    <CourseDurationField label="Durée" icon={<ScheduleIcon />} />
-    <CourseContentField label="Contenu" icon={<FileCopyOutlinedIcon />} />
-    <CourseRegistrantsField label="Participation" icon={<PeopleOutlineIcon />} />
+    <CourseDurationField source="tutor:duration" label="Durée" icon={<ScheduleIcon />} />
+    <CourseContentField source="pair:hasPart" label="Contenu" icon={<FileCopyOutlinedIcon />} />
+    <CourseRegistrantsField source="tutor:hasRegistration" label="Participation" icon={<PeopleOutlineIcon />} />
   </IconsList>
 );
 

@@ -19,13 +19,13 @@ const BorderLinearProgress = withStyles((theme) => ({
   },
 }))(LinearProgress);
 
-const CourseRegistrantsField = ({ record, resource, basePath, ...rest }) => {
+const CourseProgressionField = ({ record, resource, basePath, ...rest }) => {
   const registration = useRegistration(record);
 
   const { ids } = useGetList(
     'Lesson',
     { page: 1, perPage: 1000 },
-    {},
+    { field: 'tutor:order', order: 'ASC' },
     { 'pair:partOf': record?.id },
     { enabled: !!(record?.id) }
   );
@@ -52,4 +52,4 @@ const CourseRegistrantsField = ({ record, resource, basePath, ...rest }) => {
   );
 };
 
-export default CourseRegistrantsField;
+export default CourseProgressionField;

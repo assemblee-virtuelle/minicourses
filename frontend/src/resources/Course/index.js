@@ -1,12 +1,15 @@
+import React from "react";
+import { Redirect } from 'react-router';
+import SettingsIcon from '@material-ui/icons/Settings';
 import CourseCreate from './CourseCreate';
 import CourseEdit from './CourseEdit';
-import CourseList from './CourseList';
 import CourseShow from './CourseShow';
-import SettingsIcon from '@material-ui/icons/Settings';
+
+const RedirectToHomepage = () => <Redirect redirectTo="/" />;
 
 export default {
   config: {
-    list: CourseList,
+    list: RedirectToHomepage,
     show: CourseShow,
     create: CourseCreate,
     edit: CourseEdit,
