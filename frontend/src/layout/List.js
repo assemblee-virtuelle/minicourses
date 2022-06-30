@@ -11,8 +11,8 @@ const List = (props) => {
     <ResourceContextProvider value={props.resource}>
       <ListContextProvider value={controllerProps}>
         <ListView
-          {...props}
           {...controllerProps}
+          {...props}
           hasCreate={props.hasCreate && !!permissions && permissions.some(p => ['acl:Append', 'acl:Write', 'acl:Control'].includes(p['acl:mode']))}
         />
       </ListContextProvider>

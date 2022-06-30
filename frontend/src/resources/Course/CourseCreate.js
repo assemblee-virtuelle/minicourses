@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { TextInput, SimpleForm, useNotify, useRedirect, useDataProvider } from 'react-admin';
+import { TextInput, SimpleForm, useNotify, useRedirect, useDataProvider, ListButton } from 'react-admin';
 import { useDataModel } from '@semapps/semantic-data-provider';
 import Create from '../../layout/Create';
 
@@ -23,7 +23,7 @@ const CourseCreate = props => {
   }, [props.basePath, props.resource, dataProvider, notify, redirect]);
 
   return (
-    <Create onSuccess={onSuccess} {...props}>
+    <Create onSuccess={onSuccess} actions={[<ListButton />]} {...props}>
       <SimpleForm>
         <TextInput source={dataModel?.fieldsMapping?.title} fullWidth />
       </SimpleForm>

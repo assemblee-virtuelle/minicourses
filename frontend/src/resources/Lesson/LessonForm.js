@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageInput, SimpleForm, TextInput, NumberInput } from "react-admin";
+import { ImageInput, SimpleForm, TextInput, NumberInput, required } from "react-admin";
 import { MarkdownInput } from '@semapps/markdown-components';
 import { ImageField } from '@semapps/semantic-data-provider';
 
@@ -10,14 +10,16 @@ const LessonForm = (props) => {
 
   return (
     <SimpleForm {...props} redirect={redirect}>
-      <TextInput source="pair:label" fullWidth />
-      <MarkdownInput multiline source="pair:description" fullWidth />
+      <TextInput source="pair:label" fullWidth validate={required()} />
+      <MarkdownInput multiline source="pair:description" fullWidth validate={required()} />
       <ImageInput source="pair:depictedBy" accept="image/*" helperText="Si vous attachez une vidéo, vous devriez inclure une icône de type |> car, en cliquant dessus, l'utilisateur ira sur la vidéo">
         <ImageField source="src" />
       </ImageInput>
       <TextInput source="tutor:video" fullWidth helperText="Lien YouTube, Peertube, DailyMotion, etc." />
-      <NumberInput source="tutor:duration" fullWidth />
-      <NumberInput source="tutor:order" fullWidth />
+      <NumberInput source="tutor:duration" fullWidth validate={required()} />
+      {props.mode === 'edit' &&
+        <NumberInput source="tutor:order" fullWidth />
+      }
     </SimpleForm>
   );
 }

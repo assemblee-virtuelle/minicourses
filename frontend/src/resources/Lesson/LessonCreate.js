@@ -2,6 +2,7 @@ import React from 'react';
 import { useLocation } from 'react-router';
 import Create from '../../layout/Create';
 import LessonForm from "./LessonForm";
+import ReturnToCourseButton from "../../common/buttons/ReturnToCourseButton";
 
 const LessonCreate = props => {
   const location = useLocation();
@@ -9,8 +10,8 @@ const LessonCreate = props => {
   const redirect = courseUri ? `/Course/${encodeURIComponent(courseUri)}/1` : 'show';
 
   return (
-    <Create {...props}>
-      <LessonForm redirect={redirect} />
+    <Create actions={[<ReturnToCourseButton linkType="edit" />]} {...props}>
+      <LessonForm redirect={redirect} mode="create" />
     </Create>
   );
 }
