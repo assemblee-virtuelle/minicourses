@@ -1,0 +1,22 @@
+export const themes = [
+  "Alimentation et agriculture",
+  "Communs",
+  "Coopération",
+  "Culture",
+  "Défense du vivant",
+  "Démocratie",
+  "Ecoféminisme",
+  "Economie et décroissance",
+  "Education et formation",
+  "Energie",
+  "Engagement et militantisme",
+  "Habitat",
+  "Mobilité",
+  "Modes de vie",
+  "Numérique éthique",
+  "Santé",
+  "Solidarité",
+  "Territoires résilients",
+  "Transition intérieure",
+  "Travail"
+];

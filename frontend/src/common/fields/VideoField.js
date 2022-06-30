@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactPlayer from "react-player";
 
+const supportedDomains = ['youtube.com', 'facebook.com', 'fb.watch', 'vimeo.com'];
+
 const detectPlayer = url => {
-  if (url.includes("youtube") || url.includes("facebook") || url.includes("fb.watch")) {
+  const domain = (new URL(url)).hostname;
+  if (supportedDomains.includes(domain)) {
     return "basic";
   } else if (url.includes("videos/watch") || url.includes("videos/embed")){
     return "peertube";

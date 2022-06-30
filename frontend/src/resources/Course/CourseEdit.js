@@ -2,13 +2,14 @@ import React from 'react';
 import { ImageInput, SelectInput, TextInput, TabbedForm, FormTab, ReferenceManyField, AutocompleteArrayInput } from 'react-admin';
 import { Field } from 'react-final-form';
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ImageField, ReferenceInput, ReferenceArrayInput } from '@semapps/semantic-data-provider';
+import { ImageField, ReferenceInput } from '@semapps/semantic-data-provider';
 import Alert from '@material-ui/lab/Alert';
 import CourseTitle from './CourseTitle';
 import Edit from '../../layout/Edit';
 import AddLessonButton from "../../common/buttons/AddLessonButton";
 import CardsList from "../../common/list/CardsList";
 import LessonCard from "../Lesson/LessonCard";
+import { getThemesOptions } from "../../utils";
 
 const Condition = ({ when, is, children }) => (
   <Field name={when} subscription={{ value: true }}>
@@ -31,9 +32,7 @@ const CourseEdit = props => (
         <ReferenceInput reference="Status" source="pair:hasStatus" filter={{ a: 'tutor:CourseStatus' }}>
           <SelectInput optionText="pair:label" />
         </ReferenceInput>
-        <ReferenceArrayInput reference="Theme" source="pair:hasTopic">
-          <AutocompleteArrayInput optionText="pair:label" fullWidth />
-        </ReferenceArrayInput>
+        <AutocompleteArrayInput source="pair:hasTopic" fullWidth choices={getThemesOptions()} />
       </FormTab>
       <FormTab label="Fiches">
         <ReferenceManyField
