@@ -1,0 +1,192 @@
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+    <style>
+        @media screen and (max-width:600px) {
+            .title {
+                font-size: 22px!important;
+            }
+            .content {
+                font-size: 18px!important;
+                line-height:20px;
+            }
+            .button {
+                font-size: 20px!important;
+            }
+        }
+    </style>
+</head>
+<body style='font-size: 10pt; font-family: Verdana,Geneva,sans-serif'>
+<table style="background-color:#ececec" border="0" width="100%" cellspacing="0" cellpadding="0" align="center" bgcolor="#ececec">
+    <tbody>
+    <tr>
+        <td align="center" valign="top">
+            <table style="max-width:590px!important;width:590px" border="0" width="590" cellspacing="0" cellpadding="0">
+                <tbody>
+                <tr>
+                    <td align="center" valign="top">
+                        <div style="background-color:#ececec">
+                            <table style="min-width:590px" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td style="min-width:590px;background-color:#ececec;text-align:center" align="center" valign="top" bgcolor="#ececec">
+                                        <table style="padding-right:20px;padding-left:20px;background-color:#ececec" border="0" width="590" cellspacing="0" cellpadding="0" align="center" bgcolor="#ececec">
+                                            <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div style="font-size:10px;color:#888888;font-weight:normal;text-align:center;font-family:Arial,Helvetica,sans-serif">
+                                                        <div><a href="{{ lessonUrl }}" target="_blank">Voir cet email dans un navigateur</a>.</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:1px;line-height:0px" height="10">&nbsp;</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <div style="background-color:#ffffff;border-radius:0px">
+                            <table style="min-width:590px" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td style="min-width:590px" align="center" valign="top">
+                                        <table style="background-color:#ffffff;border-radius:0px;padding-left:20px;padding-right:20px;border-collapse:separate" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                            <tbody>
+                                            <tr>
+                                                <td style="font-size:1px;line-height:0px" height="20">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <table border="0" width="100%" cellspacing="0" cellpadding="0" align="center">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td align="center" valign="top">
+                                                                <table border="0" cellspacing="0" cellpadding="0" align="center">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td style="line-height:1px" align="left" valign="middle">
+                                                                            <div style="display:inline-block;border:0 none #000; color:#3c4858;">
+                                                                                <div>
+                                                                                    <p><em>{{ course.pair:label }}</em></p>
+                                                                                    {{#if lesson.tutor:video}}
+                                                                                        <a href="{{ lesson.tutor:video }}" target="_blank">
+                                                                                            <img style="float:left;max-width:550px;display:block" src="{{ lesson.pair:depictedBy }}" alt="{{ lesson.pair:label }}" width="550" border="0" hspace="0" vspace="0" class="CToWUd a6T" tabindex="0">
+                                                                                        </a>
+                                                                                    {{else}}
+                                                                                        <img style="float:left;max-width:550px;display:block" src="{{ lesson.pair:depictedBy }}" alt="{{ lesson.pair:label }}" width="550" border="0" hspace="0" vspace="0" class="CToWUd a6T" tabindex="0">
+                                                                                    {{/if}}
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:1px;line-height:0px" height="20">&nbsp;</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <div style="background-color:#ffffff;border-radius:0px">
+                            <table style="min-width:100%" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td align="center" valign="top">
+                                        <table style="background-color:#ffffff;padding-left:20px;padding-right:20px;padding-bottom:20px;border-collapse:separate;border-radius:0px;border-bottom:0px none #c8c8c8" border="0" width="100%" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
+                                            <tbody>
+                                            <tr>
+                                                <td align="left" valign="top">
+                                                    <table border="0" width="100%" cellspacing="0" cellpadding="0">
+                                                        <tbody>
+                                                        <tr>
+                                                            <th style="text-align:left;font-weight:normal;padding-right:0px" valign="top">
+                                                                <table border="0" width="100%" cellspacing="0" cellpadding="0" align="left">
+                                                                    <tbody>
+                                                                    <tr>
+                                                                        <td class="content" style="font-size:14px;font-family:Arial,Helvetica,sans-serif,sans-serif;color:#3c4858;line-height:21px">
+                                                                            <h2>{{ lesson.pair:label }}</h2>
+                                                                            <div class="content">{{{ lessonHtml }}}</div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </th>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="center" valign="top">
+                        <div style="background-color:#ececec">
+                            <table style="min-width:590px" border="0" width="100%" cellspacing="0" cellpadding="0">
+                                <tbody>
+                                <tr>
+                                    <td style="font-size:1px;line-height:0px" height="20">&nbsp;</td>
+                                </tr>
+                                <tr>
+                                    <td style="min-width:590px;background-color:#ececec;text-align:center" align="center" valign="top" bgcolor="#ececec">
+                                        <table style="padding-right:20px;padding-left:20px;background-color:#ececec" border="0" width="590" cellspacing="0" cellpadding="0" align="center" bgcolor="#ececec">
+                                            <tbody>
+                                            <tr>
+                                                <td style="font-size:1px;line-height:0px" height="10">&nbsp;</td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <div style="font-size:10px;color:#888888;font-weight:normal;text-align:center;font-family:Arial,Helvetica,sans-serif">
+                                                        <div>Cet email a été envoyé à <a href="mailto:{{ account.email }}" target="_blank">{{ account.email }}</a>, car vous vous êtes abonnés au mini-parcours "{{ course.pair:label }}". Vous pouvez à tout moment vous <a href="{{ courseUrl }}" target="_blank">désinscrire en cliquant sur ce lien</a>.</div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td style="font-size:1px;line-height:0px" height="10">&nbsp;</td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -5,7 +5,5 @@ import { themes } from "./config/constants";
 export const slugify = label => createSlug(label.trim(), { lang: 'fr', custom: { '.': '.', 'Ǧ': 'g' } });
 
 export const getThemesOptions = () => {
-  const result = themes.map(label => ({ id: urlJoin(process.env.REACT_APP_MIDDLEWARE_URL, 'themes', slugify(label)) , name: label }));
-  console.log('result', result);
-  return result;
+  return themes.map(label => ({ id: urlJoin(process.env.REACT_APP_MIDDLEWARE_URL, 'themes', slugify(label)) , name: label }));
 }
