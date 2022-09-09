@@ -1,0 +1,9 @@
+.idea
+.env.local
+.env.*.local
+/actors
+/node_modules
+/data
+/jwt/*.key
+/jwt/*.key.pub
+/uploads

@@ -1,0 +1,27 @@
+[
+  {
+    "slug": "available",
+    "type": "tutor:CourseStatus",
+    "pair:label": "Disponible"
+  },
+  {
+    "slug": "unavailable",
+    "type": "tutor:CourseStatus",
+    "pair:label": "Indisponible"
+  },
+  {
+    "slug": "running",
+    "type": "tutor:RegistrationStatus",
+    "pair:label": "En cours"
+  },
+  {
+    "slug": "finished",
+    "type": "tutor:RegistrationStatus",
+    "pair:label": "Terminé"
+  },
+  {
+    "slug": "aborted",
+    "type": "tutor:RegistrationStatus",
+    "pair:label": "Interrompu"
+  }
+]

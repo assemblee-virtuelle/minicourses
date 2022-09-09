@@ -1,0 +1,20 @@
+{
+  "name": "minicourses",
+  "version": "1.0.0",
+  "description": "ActivityPub module for SemApps",
+  "license": "Apache-2.0",
+  "author": "Virtual Assembly",
+  "dependencies": {
+    "@semapps/activitypub": "0.4.0-alpha.42",
+    "@semapps/ldp": "0.4.0-alpha.42",
+    "@semapps/mime-types": "0.4.0-alpha.42",
+    "moleculer": "^0.14.18",
+    "moleculer-bull": "0.2.8",
+    "moleculer-mail": "^1.2.5",
+    "showdown": "^2.1.0",
+    "url-join": "^4.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
