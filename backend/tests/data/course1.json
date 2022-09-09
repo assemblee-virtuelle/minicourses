@@ -1,4 +1,4 @@
 {
-  "type": "tutor:DigitalCourse",
+  "type": ["tutor:DigitalCourse", "Application"],
   "pair:label": "My first course !"
 }

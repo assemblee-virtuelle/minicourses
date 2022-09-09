@@ -13,18 +13,6 @@ services:
     environment:
       ADMIN_PASSWORD: "admin"
 
-  fuseki_test:
-    image: semapps/jena-fuseki-webacl
-    container_name: fuseki_test
-    volumes:
-      - ./data/fuseki_test:/fuseki
-    ports:
-      - "3040:3030"
-    expose:
-      - "3040"
-    environment:
-      ADMIN_PASSWORD: "admin"
-
   redis:
     image: redis
     container_name: redis

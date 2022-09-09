@@ -4,9 +4,27 @@ const waitForExpect = require('wait-for-expect');
 const { ACTIVITY_TYPES, PUBLIC_URI } = require('@semapps/activitypub');
 const { MIME_TYPES } = require('@semapps/mime-types');
 const initialize = require('./initialize');
-const CONFIG = require('../config/config')
+const CONFIG = require('../config/config');
+const { isoDate, expectContainerContains } = require('./utils');
 
 jest.setTimeout(30000);
+
+// Do not fake setTimeout and setInterval because it's needed by wait-for-expect
+// See https://github.com/testing-library/react-hooks-testing-library/issues/631
+jest.useFakeTimers({
+    doNotFake: [
+      'setImmediate',
+      'setInterval',
+      'setTimeout',
+      'cancelAnimationFrame',
+      'cancelIdleCallback',
+      'clearImmediate',
+      'clearInterval',
+      'clearTimeout',
+      'nextTick',
+      'queueMicrotask'
+    ]
+  });
 
 let broker;
 
@@ -71,6 +89,8 @@ describe('Test contacts app', () => {
       webId: 'system'
     });
 
+    await broker.call('activitypub.actor.awaitCreateComplete', { actorUri: courseUri });
+
     for (let i = 1; i <= 3; i++) {
       const lessonData = require(`./data/lesson${i}.json`);
 
@@ -89,6 +109,8 @@ describe('Test contacts app', () => {
   });
 
   test('Alice follows the course', async () => {
+    jest.setSystemTime(new Date('2021-07-12'));
+
     await broker.call('activitypub.outbox.post', {
       collectionUri: alice.outbox,
       type: ACTIVITY_TYPES.FOLLOW,
@@ -97,191 +119,15 @@ describe('Test contacts app', () => {
       to: [courseUri, PUBLIC_URI],
     });
 
-    await waitForExpect(async () => {
-        await expect(
-          broker.call('ldp.container.get', {
-            containerUri: urlJoin(CONFIG.HOME_URL, 'registrations'),
-            accept: MIME_TYPES.JSON,
-            webId: 'system',
-          })
-        ).resolves.toMatchObject({
-          type: ['ldp:Container', 'ldp:BasicContainer'],
-          'ldp:contains': [
-            {
-              type: 'tutor:Registration',
-              'tutor:registrant': alice.id,
-              'tutor:registrationFor': courseUri
-            }
-          ]
-        });
-      });
-
-    // await waitForExpect(() => {
-    //   expect(mockSendNotification).toHaveBeenCalledTimes(1);
-    // });
-    //
-    // expect(mockSendNotification.mock.calls[0][0].params.data.key).toBe('contact_request');
-    //
-    // await waitForExpect(async () => {
-    //   await expect(
-    //     broker.call('webacl.resource.hasRights', {
-    //       resourceUri: alice.url,
-    //       rights: { read: true },
-    //       webId: bob.id,
-    //     })
-    //   ).resolves.toMatchObject({ read: true });
-    // });
-    //
-    // await waitForExpect(async () => {
-    //   await expect(
-    //     broker.call('activitypub.collection.includes', {
-    //       collectionUri: bob['apods:contactRequests'],
-    //       itemUri: contactRequestToBob.id,
-    //     })
-    //   ).resolves.toBeTruthy();
-    // });
-    //
-    // contactRequestToCraig = await broker.call('activitypub.outbox.post', {
-    //   collectionUri: alice.outbox,
-    //   type: ACTIVITY_TYPES.OFFER,
-    //   actor: alice.id,
-    //   object: {
-    //     type: ACTIVITY_TYPES.ADD,
-    //     object: alice.url,
-    //   },
-    //   content: 'Salut Craig, ça fait longtemps !',
-    //   target: craig.id,
-    //   to: craig.id,
-    // });
-    //
-    // await waitForExpect(async () => {
-    //   await expect(
-    //     broker.call('activitypub.collection.includes', {
-    //       collectionUri: bob['apods:contactRequests'],
-    //       itemUri: contactRequestToCraig.id,
-    //     })
-    //   ).resolves.toBeFalsy();
-    // });
-    //
-    // await waitForExpect(() => {
-    //   expect(mockSendNotification).toHaveBeenCalledTimes(2);
-    // });
-    //
-    // expect(mockSendNotification.mock.calls[1][0].params.data.key).toBe('contact_request');
+    await expectContainerContains(broker, urlJoin(CONFIG.HOME_URL, 'registrations'), {
+      type: 'tutor:Registration',
+      'pair:hasStatus': urlJoin(CONFIG.HOME_URL, 'status', 'running'),
+      'pair:startDate': isoDate(),
+      'tutor:registrant': alice.id,
+      'tutor:registrationFor': courseUri,
+    });
   });
 
-  // test('Bob accept Alice contact request', async () => {
-  //   await broker.call('activitypub.outbox.post', {
-  //     collectionUri: bob.outbox,
-  //     type: ACTIVITY_TYPES.ACCEPT,
-  //     actor: bob.id,
-  //     object: contactRequestToBob.id,
-  //     to: alice.id,
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', {
-  //         collectionUri: bob['apods:contactRequests'],
-  //         itemUri: contactRequestToBob.id,
-  //       })
-  //     ).resolves.toBeFalsy();
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', { collectionUri: bob['apods:contacts'], itemUri: alice.id })
-  //     ).resolves.toBeTruthy();
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', { collectionUri: alice['apods:contacts'], itemUri: bob.id })
-  //     ).resolves.toBeTruthy();
-  //   });
-  //
-  //   // Bob profile is cached in Alice dataset
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('triplestore.countTriplesOfSubject', {
-  //         uri: alice.url,
-  //         dataset: bob.preferredUsername,
-  //         webId: 'system',
-  //       })
-  //     ).resolves.toBeTruthy();
-  //   });
-  //
-  //   // Alice profile is cached in Bob dataset
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('triplestore.countTriplesOfSubject', {
-  //         uri: bob.url,
-  //         dataset: alice.preferredUsername,
-  //         webId: 'system',
-  //       })
-  //     ).resolves.toBeTruthy();
-  //   });
-  //
-  //   await waitForExpect(() => {
-  //     expect(mockSendNotification).toHaveBeenCalledTimes(3);
-  //   });
-  //
-  //   expect(mockSendNotification.mock.calls[2][0].params.data.key).toBe('accept_contact_request');
-  // });
-  //
-  // test('Craig reject Alice contact request', async () => {
-  //   await broker.call('activitypub.outbox.post', {
-  //     collectionUri: craig.outbox,
-  //     type: ACTIVITY_TYPES.REJECT,
-  //     actor: craig.id,
-  //     object: contactRequestToCraig.id,
-  //     to: alice.id,
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', {
-  //         collectionUri: craig['apods:contactRequests'],
-  //         itemUri: contactRequestToCraig.id,
-  //       })
-  //     ).resolves.toBeFalsy();
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', {
-  //         collectionUri: craig['apods:rejectedContacts'],
-  //         itemUri: alice.id,
-  //       })
-  //     ).resolves.toBeTruthy();
-  //   });
-  // });
-  //
-  // test('Bob removes Alice from his contacts', async () => {
-  //   await broker.call('activitypub.outbox.post', {
-  //     collectionUri: bob.outbox,
-  //     type: ACTIVITY_TYPES.REMOVE,
-  //     actor: bob.id,
-  //     object: alice.id,
-  //     origin: bob['apods:contacts']
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('activitypub.collection.includes', {
-  //         collectionUri: bob['apods:contacts'],
-  //         itemUri: alice.id,
-  //       })
-  //     ).resolves.toBeFalsy();
-  //   });
-  //
-  //   await waitForExpect(async () => {
-  //     await expect(
-  //       broker.call('ldp.container.includes', {
-  //         containerUri: urlJoin(bob.url, 'data', 'profiles'),
-  //         resourceUri: alice.url,
-  //       })
-  //     ).resolves.toBeFalsy();
-  //   });
-  // });
+
+
 });
