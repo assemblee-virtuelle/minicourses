@@ -51,7 +51,6 @@ module.exports = {
   },
   actions: {
     async sendLessons(ctx) {
-      const { currentTime } = ctx.params;
       const results = [];
       const registrations = await ctx.call('minicourses.registrations.getRunning');
       for( let registration of registrations ) {
@@ -68,11 +67,15 @@ module.exports = {
         } else {
           // If lesson already received, check if it is finished
           const currentLessonIndex = lessons.findIndex(l => l.id === registration['tutor:currentLesson']);
-          const currentDay = +removeTime(new Date(currentTime));
+          const nextLessonIndex = currentLessonIndex + 1;
+          const currentDay = +removeTime(new Date());
           const nextLessonDay = +removeTime(addDays(registration['tutor:lessonStarted'], lessons[currentLessonIndex]['tutor:duration']));
           if( currentDay >= nextLessonDay ) {
-            const lastLessonIndex = lessons.length -1;
-            if( currentLessonIndex === lastLessonIndex ) {
+            const lastLessonIndex = lessons.length - 1;
+
+            await this.actions.sendLesson({ lesson: lessons[currentLessonIndex+1], registration }, { parentCtx: ctx });
+
+            if( nextLessonIndex === lastLessonIndex ) {
               // If current lesson is last lesson, mark registration as finished
               await ctx.call('ldp.resource.put', {
                 resourceUri: registration.id,
@@ -80,21 +83,20 @@ module.exports = {
                   ...registration,
                   'tutor:currentLesson': undefined,
                   'tutor:lessonStarted': undefined,
-                  'pair:endDate': (new Date()),
+                  'pair:endDate': (new Date()).toISOString(),
                   'pair:hasStatus': urlJoin(this.settings.baseUrl, 'status', 'finished')
                 },
                 contentType: MIME_TYPES.JSON,
                 webId: 'system'
               });
-            } else {
-              await this.actions.sendLesson({ lesson: lessons[currentLessonIndex+1], registration }, { parentCtx: ctx });
-              results.push({
-                currentDay,
-                nextLessonDay,
-                registration,
-                lesson: lessons[currentLessonIndex+1]
-              });
             }
+
+            results.push({
+              currentDay,
+              nextLessonDay,
+              registration,
+              lesson: lessons[currentLessonIndex+1]
+            });
           }
         }
       }
@@ -170,9 +172,7 @@ module.exports = {
       {
         name: '*',
         process(job) {
-          return this.actions.sendLessons({
-            currentTime: job.opts && job.opts.timestamp
-          });
+          return this.actions.sendLessons();
         }
       }
     ]

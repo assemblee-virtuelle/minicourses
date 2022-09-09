@@ -31,7 +31,9 @@ module.exports = {
   created() {
     const { baseUrl, frontendUrl, containersPath, queueServiceUrl } = this.settings;
 
-    this.broker.createService(CoursesService, {
+    this.subservices = {};
+
+    this.subservices.courses = this.broker.createService(CoursesService, {
       settings: {
         baseUrl,
         path: containersPath + '/courses',
@@ -39,14 +41,14 @@ module.exports = {
       },
     });
 
-    this.broker.createService(LessonsService, {
+    this.subservices.lessons = this.broker.createService(LessonsService, {
       settings: {
         path: containersPath + '/lessons',
         ...this.settings.lessons,
       },
     });
 
-    this.broker.createService(MailerService, {
+    this.subservices.mailer = this.broker.createService(MailerService, {
       mixins: queueServiceUrl ? [QueueService(queueServiceUrl)] : undefined,
       settings: {
         baseUrl,
@@ -55,7 +57,7 @@ module.exports = {
       },
     });
 
-    this.broker.createService(RegistrationsService, {
+    this.subservices.registrations = this.broker.createService(RegistrationsService, {
       settings: {
         baseUrl,
         path: containersPath + '/registrations',
