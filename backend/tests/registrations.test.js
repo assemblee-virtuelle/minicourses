@@ -240,13 +240,13 @@ describe('Course registration and mailer', () => {
 
     await broker.call('minicourses.mailer.sendLessons');
 
-    await delay(5000);
+    await delay(2000);
 
     await expectCollectionToHaveTotalItems(broker, alice.inbox, 4);
   });
 
   test('Day 3: Second course is sent to Alice', async () => {
-    jest.setSystemTime(new Date('2021-07-17T17:00:00Z'));
+    jest.setSystemTime(new Date('2021-07-16T17:00:00Z'));
 
     await broker.call('minicourses.mailer.sendLessons');
 
@@ -257,14 +257,14 @@ describe('Course registration and mailer', () => {
       'tutor:registrant': alice.id,
       'tutor:registrationFor': course.id,
       'tutor:currentLesson': lessons[2].id,
-      'tutor:lessonStarted': '2021-07-17T17:00:00Z'
+      'tutor:lessonStarted': '2021-07-16T17:00:00Z'
     });
 
     await expectOrderedCollectionContains(broker, alice.inbox, {
       type: ACTIVITY_TYPES.ANNOUNCE,
       actor: course.id,
       object: lessons[2].id,
-      published: '2021-07-17T17:00:00Z',
+      published: '2021-07-16T17:00:00Z',
       to: alice.id
     });
 
@@ -276,7 +276,7 @@ describe('Course registration and mailer', () => {
   });
 
   test('Day 5: Final course is sent to Alice', async () => {
-    jest.setSystemTime(new Date('2021-07-20T17:00:00Z'));
+    jest.setSystemTime(new Date('2021-07-18T17:00:00Z'));
 
     await broker.call('minicourses.mailer.sendLessons');
 
@@ -284,7 +284,7 @@ describe('Course registration and mailer', () => {
       type: ACTIVITY_TYPES.ANNOUNCE,
       actor: course.id,
       object: lessons[3].id,
-      published: '2021-07-20T17:00:00Z',
+      published: '2021-07-18T17:00:00Z',
       to: alice.id
     });
 
@@ -292,7 +292,7 @@ describe('Course registration and mailer', () => {
       type: 'tutor:Registration',
       'pair:hasStatus': urlJoin(CONFIG.HOME_URL, 'status', 'finished'),
       'pair:startDate': '2021-07-14T14:00:00Z',
-      'pair:endDate': '2021-07-20T17:00:00Z',
+      'pair:endDate': '2021-07-18T17:00:00Z',
       'tutor:registrant': alice.id,
       'tutor:registrationFor': course.id
     });

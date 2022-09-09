@@ -4,19 +4,25 @@
 
 ## Getting started
 
+Requirements:
+
+- Node (v14.16 minimum)
+- Yarn
+- Docker and docker-compose
+
 ## Launch the backend
 
 ```
+docker-compose up -d
 yarn install
 yarn run bootstrap
-docker-compose up -d fuseki redis mailcatcher
 cd backend
 yarn run dev
 ```
 
-Moleculer is now functionning in REPL mode. You should be able to type commands such as `services` and view the results.
+Moleculer will function in [REPL mode](https://moleculer.services/docs/0.14/moleculer-repl.html). You should be able to type commands such as `services` and view the results.
 
-### Import data
+### Import base data
 
 Import the base data by entering these commands:
 
@@ -46,16 +52,10 @@ cd /MINICOURSES_REPO
 yarn run link-semapps-packages
 ```
 
-## Deployment to production
-
-Follow the guide [here](deploy/README.md).
-
-## Tests
+## Integration tests
 
 ```
 yarn install
 yarn run bootstrap
-docker-compose up -d fuseki_test
-cd tests
 yarn run test
 ```
