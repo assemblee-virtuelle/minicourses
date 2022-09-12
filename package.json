@@ -5,7 +5,7 @@
     "version": "lerna version --force-publish='*' --exact",
     "publish": "lerna publish from-package --dist-tag latest",
     "prettier": "prettier --single-quote --print-width 120 --write --ignore-path .gitignore '**/*.js'",
-    "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/core @semapps/dataset @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mirror @semapps/mime-types @semapps/notifications @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
+    "link-semapps-packages": "yarn link @semapps/activitypub @semapps/auth @semapps/backup @semapps/core @semapps/importer @semapps/inference @semapps/jsonld @semapps/ldp @semapps/middlewares @semapps/mirror @semapps/mime-types @semapps/notifications @semapps/pod @semapps/signature @semapps/sparql-endpoint @semapps/triplestore @semapps/void @semapps/webacl @semapps/webfinger @semapps/webhooks @semapps/webid"
   },
   "devDependencies": {
     "lerna": "^4.0.0",
