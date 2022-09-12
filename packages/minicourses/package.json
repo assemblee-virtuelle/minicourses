@@ -1,7 +1,7 @@
 {
   "name": "minicourses",
   "version": "1.0.0",
-  "description": "ActivityPub module for SemApps",
+  "description": "Minicourses services",
   "license": "Apache-2.0",
   "author": "Virtual Assembly",
   "dependencies": {
