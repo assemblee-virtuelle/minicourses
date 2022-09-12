@@ -1679,7 +1679,6 @@
   version "0.4.0-alpha.42"
   dependencies:
     "@semapps/activitypub" "0.4.0-alpha.42"
-    "@semapps/dataset" "file:../../.cache/yarn/v6/npm-@semapps-core-0.4.0-alpha.42-47527f0a-b53f-481f-99fe-0893607b14a6-1662651282776/node_modules/@semapps/dataset"
     "@semapps/jsonld" "0.4.0-alpha.42"
     "@semapps/ldp" "0.4.0-alpha.42"
     "@semapps/mirror" "0.4.0-alpha.42"
@@ -1692,12 +1691,6 @@
     moleculer "^0.14.19"
     moleculer-web "^0.10.0-beta1"
     url-join "^4.0.1"
-
-"@semapps/dataset@file:../semapps/src/middleware/packages/dataset":
-  version "0.4.0-alpha.42"
-  dependencies:
-    node-fetch "^2.6.0"
-    string-template "^1.0.0"
 
 "@semapps/importer@0.4.0-alpha.42":
   version "0.4.0-alpha.42"
@@ -6777,7 +6770,7 @@ node-fetch@2.6.1:
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
   integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
-node-fetch@2.6.7, node-fetch@^2.6.0, node-fetch@^2.6.1, node-fetch@^2.6.6, node-fetch@^2.6.7:
+node-fetch@2.6.7, node-fetch@^2.6.1, node-fetch@^2.6.6, node-fetch@^2.6.7:
   version "2.6.7"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.7.tgz#24de9fba827e3b4ae44dc8b20256a379160052ad"
   integrity sha512-ZjMPFEfVx5j+y2yF35Kzx5sF7kDzxuDj6ziH4FFbOp87zKDZNx8yExJIb05OGF4Nlt9IHFIMBkRl41VdvcNdbQ==
@@ -8791,11 +8784,6 @@ string-length@^4.0.1:
   dependencies:
     char-regex "^1.0.2"
     strip-ansi "^6.0.0"
-
-string-template@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/string-template/-/string-template-1.0.0.tgz#9e9f2233dc00f218718ec379a28a5673ecca8b96"
-  integrity sha512-SLqR3GBUXuoPP5MmYtD7ompvXiG87QjT6lzOszyXjTM86Uu7At7vNnt2xgyTLq5o9T4IxTYFyGxcULqpsmsfdg==
 
 string-width@^1.0.1:
   version "1.0.2"

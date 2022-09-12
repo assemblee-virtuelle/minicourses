@@ -12,7 +12,7 @@ module.exports = {
       url: CONFIG.SPARQL_ENDPOINT,
       user: CONFIG.JENA_USER,
       password: CONFIG.JENA_PASSWORD,
-      dataset: CONFIG.MAIN_DATASET,
+      mainDataset: CONFIG.MAIN_DATASET,
     },
     containers
   }

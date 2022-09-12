@@ -64,7 +64,11 @@ describe('Course registration and mailer', () => {
 
       const { webId } = await broker.call('auth.signup', actorData);
 
+      console.log('webId alice', webId)
+
       actors[i] = await broker.call('activitypub.actor.awaitCreateComplete', { actorUri: webId });
+
+      console.log('actor alice', actors[i])
 
       expect(actors[i].preferredUsername).toBe(actorData.username);
     }

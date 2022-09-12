@@ -24,7 +24,7 @@ const initialize = async () => {
   });
 
   await clearDataset(CONFIG.MAIN_DATASET);
-  await clearDataset('settings');
+  await clearDataset(CONFIG.SETTINGS_DATASET);
 
   return broker;
 };
