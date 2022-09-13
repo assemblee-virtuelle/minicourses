@@ -1,7 +1,7 @@
 {
   "name": "minicourses-backend",
   "private": true,
-  "version": "1.0.0",
+  "version": "0.9.0",
   "license": "Apache-2.0",
   "scripts": {
     "dev": "moleculer-runner --repl --hot services importers/*.js",
