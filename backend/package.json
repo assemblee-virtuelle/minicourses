@@ -11,8 +11,8 @@
   "dependencies": {
     "@semapps/auth": "0.4.0-alpha.42",
     "@semapps/core": "file:/home/sebastien/SemApps/semapps/src/middleware/packages/core",
-    "@semapps/inference": "0.4.0-alpha.42",
     "@semapps/importer": "0.4.0-alpha.42",
+    "@semapps/inference": "0.4.0-alpha.42",
     "@semapps/mime-types": "0.4.0-alpha.42",
     "@semapps/webid": "0.4.0-alpha.42",
     "dotenv-flow": "^3.1.0",
