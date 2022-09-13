@@ -6,7 +6,7 @@ module.exports = {
   mixins: [AuthLocalService],
   settings: {
     baseUrl: CONFIG.HOME_URL,
-    jwtPath: path.resolve(__dirname, '../jwt'),
+    jwtPath: path.resolve(__dirname, '../../jwt'),
     accountsDataset: CONFIG.SETTINGS_DATASET,
   }
 };
