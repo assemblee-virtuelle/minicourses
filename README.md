@@ -2,6 +2,10 @@
 
 # Minicourses
 
+Build minicourses with image and texts and allow subscribers to receive them by email in the chosen frequency.
+
+![Capture d’écran de 2022-09-14 19-04-51](https://user-images.githubusercontent.com/17931931/190218200-a5ea6976-dedb-4af7-8442-ce58cd676c8b.png)
+
 ## Getting started
 
 Requirements:
