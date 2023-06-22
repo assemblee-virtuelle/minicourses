@@ -6,9 +6,10 @@ import CourseCard from "./CourseCard";
 import useRegistrations from "../../hooks/useRegistrations";
 
 const CourseList = props => {
+  console.log(">>>>> Dans CourseList")
   useCheckAuthenticated();
   const registrations = useRegistrations();
-  return (
+ return (
     <List {...props}>
       <CardsList
         CardComponent={CourseCard}

@@ -1,7 +1,8 @@
 import React from 'react';
 import { useGetList } from "react-admin";
-import {LinearProgress, withStyles, Typography} from "@material-ui/core";
+import {LinearProgress, Typography} from "@mui/material";
 import useRegistration from "../../hooks/useRegistration";
+import withStyles from '@mui/styles/withStyles';
 
 const STATUS_FINISHED = process.env.REACT_APP_MIDDLEWARE_URL + 'status/finished';
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { useShowContext } from 'react-admin';
-import { Box, Card, CardMedia, CardContent, Grid, makeStyles, useMediaQuery } from '@material-ui/core';
+import { Box, Card, CardMedia, CardContent, Grid, useMediaQuery } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import VideoField from "../common/fields/VideoField";
 
 const useStyles = makeStyles({

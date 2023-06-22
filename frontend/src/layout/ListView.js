@@ -1,6 +1,6 @@
 import React from 'react';
 import { CreateButton, useListContext } from 'react-admin';
-import { Box, Typography, Grid } from '@material-ui/core';
+import { Box, Typography, Grid } from '@mui/material';
 
 const ListView = (props) => {
   const { defaultTitle, hasCreate } = useListContext(props);

@@ -1,6 +1,7 @@
 import React from 'react';
-import { List, ListItem, ListItemAvatar, ListItemText, Divider, makeStyles } from '@material-ui/core';
+import { List, ListItem, ListItemAvatar, ListItemText, Divider } from '@mui/material';
 import { useShowContext } from 'react-admin';
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
   root: (props) => ({

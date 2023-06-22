@@ -1,7 +1,6 @@
 import React from "react";
-import { ImageInput, SimpleForm, TextInput, NumberInput, required } from "react-admin";
+import { ImageInput, SimpleForm, TextInput, NumberInput, required, ImageField } from "react-admin";
 import { MarkdownInput } from '@semapps/markdown-components';
-import { ImageField } from '@semapps/semantic-data-provider';
 
 const LessonForm = (props) => {
   const redirect = props.mode === 'edit'

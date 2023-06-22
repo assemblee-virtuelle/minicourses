@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { useListContext, Loading, linkToRecord, Link } from 'react-admin';
-import { Card, CardMedia, CardContent, makeStyles } from '@material-ui/core';
+import { useListContext, Loading, TextField, linkToRecord, Link } from 'react-admin';
+import { Card, CardMedia, CardHeader, CardContent } from '@mui/material'
+import makeStyles from '@mui/styles/makeStyles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -37,28 +38,33 @@ const useStyles = makeStyles((theme) => ({
 
 const CardsList = ({ CardComponent, link, ...rest }) => {
   const classes = useStyles();
-  const { ids, data, basePath, loading } = useListContext();
-  return loading ? (
-    <Loading loadingPrimary="ra.page.loading" loadingSecondary="ra.message.loading" className={classes.loading} />
-  ) : (
-    ids.map((id) => {
-      if( !data[id] ) return null;
-      const image = data[id]?.['pair:depictedBy'];
-      return (
-        <Link key={id} to={linkToRecord(basePath, id, link)} className={classes.root}>
-          <Card key={id} className={classes.details}>
-            {image && (
-              <CardMedia className={classes.image} image={Array.isArray(image) ? image[0] : image} />
-            )}
-            <CardContent className={classes.content}>
-              <CardComponent record={data[id]} basePath={basePath} {...rest} />
-            </CardContent>
-          </Card>
-        </Link>
-      )
-    })
-  );
-};
+  const { data, isLoading } = useListContext();
+
+  if (isLoading) return <Loading />;
+  if (data.length === 0) return <p>No data</p>;
+
+  return (
+    <div style={{ margin: '1em' }}>
+    {
+      data.map(record => {
+        const image = record?.['pair:depictedBy'];
+        return (
+          <Link key={record.id} to={linkToRecord(record.id, link)} className={classes.root}>
+            <Card key={record.id} className={classes.details}>
+              {image && (
+                <CardMedia className={classes.image} image={Array.isArray(image) ? image[0] : image} />
+              )}
+              <CardContent className={classes.content}>
+                <CardComponent record={record} {...rest} />
+              </CardContent>
+            </Card>
+          </Link>
+        )
+      })
+    }
+    </div>
+  )
+}
 
 CardsList.defaultProps = {
   link: 'show',

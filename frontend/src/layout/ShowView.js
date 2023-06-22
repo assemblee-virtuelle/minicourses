@@ -1,6 +1,6 @@
 import React from 'react';
 import { ListButton, EditButton, useShowContext } from 'react-admin';
-import { Box, Typography, Grid } from '@material-ui/core';
+import { Box, Typography, Grid } from '@mui/material';
 
 const ShowView = (props) => {
   const { record } = useShowContext(props);

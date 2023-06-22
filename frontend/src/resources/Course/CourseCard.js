@@ -1,10 +1,11 @@
 import React from 'react';
 import { TextField } from 'react-admin';
-import { makeStyles, Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
+import makeStyles from '@mui/styles/makeStyles';
 import RegistrationStatusField from "../../common/fields/RegistrationStatusField";
-import ScheduleIcon from '@material-ui/icons/Schedule';
-import FileCopyOutlinedIcon from '@material-ui/icons/FileCopyOutlined';
-import PeopleIcon from '@material-ui/icons/People';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import FileCopyOutlinedIcon from '@mui/icons-material/FileCopyOutlined';
+import PeopleIcon from '@mui/icons-material/People';
 import Chip from "../../common/Chip";
 import CourseDurationField from "../../common/fields/CourseDurationField";
 import CourseContentField from "../../common/fields/CourseContentField";
@@ -31,6 +32,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 const CourseCard = ({ record, registrations }) => {
+  console.log("Dans CourseCard", [record, registrations] );
   const classes = useStyles();
   return (
     <>

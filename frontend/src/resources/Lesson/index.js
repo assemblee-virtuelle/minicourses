@@ -1,11 +1,12 @@
 import React from "react";
-import { Redirect } from 'react-router';
-import SettingsIcon from '@material-ui/icons/Settings';
+// import { Redirect } from 'react-router';
+import { Navigate } from "react-router-dom";
+import SettingsIcon from '@mui/icons-material/Settings';
 import LessonCreate from "./LessonCreate";
 import LessonEdit from "./LessonEdit";
 import LessonShow from "./LessonShow";
 
-const RedirectToHomepage = () => <Redirect redirectTo="/" />;
+const RedirectToHomepage = () => <Navigate to="/" replace />;
 
 export default {
   config: {

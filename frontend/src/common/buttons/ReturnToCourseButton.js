@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, Link, linkToRecord } from "react-admin";
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const ReturnToCourseButton = ({ record, linkType }) => {
   return (

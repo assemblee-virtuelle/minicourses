@@ -4,6 +4,7 @@ import CreateView from "./CreateView";
 
 const Create = (props) => {
   const controllerProps = useCreateController(props);
+  console.log("Create>controllerProps=", controllerProps);
   return(
     <ResourceContextProvider value={props.resource}>
       <CreateContextProvider value={controllerProps}>

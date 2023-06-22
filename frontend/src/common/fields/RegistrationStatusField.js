@@ -1,8 +1,8 @@
 import React from 'react';
-import { Chip } from "@material-ui/core";
-import AutorenewIcon from '@material-ui/icons/Autorenew';
-import CloseIcon from '@material-ui/icons/Close';
-import CheckIcon from '@material-ui/icons/Check';
+import { Chip } from "@mui/material";
+import AutorenewIcon from '@mui/icons-material/Autorenew';
+import CloseIcon from '@mui/icons-material/Close';
+import CheckIcon from '@mui/icons-material/Check';
 
 const STATUS_RUNNING = process.env.REACT_APP_MIDDLEWARE_URL + 'status/running';
 const STATUS_ABORTED = process.env.REACT_APP_MIDDLEWARE_URL + 'status/aborted';

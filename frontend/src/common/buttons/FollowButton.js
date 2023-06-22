@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { useRecordContext, useNotify, useRefresh } from "react-admin";
 import { useOutbox, ACTIVITY_TYPES, PUBLIC_URI } from '@semapps/activitypub-components';
-import { Button, useMediaQuery } from '@material-ui/core';
-import CheckIcon from '@material-ui/icons/Check';
-import ClearIcon from '@material-ui/icons/Clear';
-import AutorenewIcon from '@material-ui/icons/Autorenew';
+import { Button, useMediaQuery } from '@mui/material';
+import CheckIcon from '@mui/icons-material/Check';
+import ClearIcon from '@mui/icons-material/Clear';
+import AutorenewIcon from '@mui/icons-material/Autorenew';
 import useRegistration from "../../hooks/useRegistration";
 
 const delay = t => new Promise(resolve => setTimeout(resolve, t));

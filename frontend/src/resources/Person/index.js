@@ -1,7 +1,8 @@
 import React from "react";
-import { Redirect } from 'react-router';
+// import { Redirect } from 'react-router';
+import { Navigate } from "react-router-dom";
 
-const RedirectToHomepage = () => <Redirect redirectTo="/" />;
+const RedirectToHomepage = () => <Navigate to="/" replace />;
 
 export default {
   config: {

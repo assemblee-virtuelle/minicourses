@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Link } from "react-admin";
-import { makeStyles } from '@material-ui/core';
-import ChatBubbleIcon from "@material-ui/icons/ChatBubble";
+import makeStyles from '@mui/styles/makeStyles';
+import ChatBubbleIcon from "@mui/icons-material/ChatBubble";
 
 const useStyles = makeStyles(theme => ({
   button: {
